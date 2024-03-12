@@ -50,6 +50,7 @@ void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int
 void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_source, int frame, int DIM_SPRITE, SDL_Renderer *rendu);
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect * cameraRect);
+void affichageMenuImage(SDL_Renderer *rendu);
 
 
 #endif

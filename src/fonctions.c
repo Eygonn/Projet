@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
 #include <SDL2/SDL_image.h>
 #include "fonctions.h"
+#include <stdbool.h>
 
 SDL_Surface *temp_surface;
 
@@ -12,19 +14,35 @@ SDL_Texture *run_front_tex;
 SDL_Texture *run_back_tex;
 SDL_Texture *run_right_tex;
 SDL_Texture *run_left_tex;
+SDL_Texture *menu_tex;
 
 SDL_Texture *fond_tex;
 
 
 int initialisation(SDL_Window **fenetre, SDL_Renderer **rendu) {
+
     // Initialisation de la bibliothèque SDL
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         printf("Problème d'initialisation de la bibliothèque SDL : %s\n", SDL_GetError());
         return 0;
     }
 
-    // Création de la fenêtre et du rendu
+     // Initialisation de la SDL
+    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
+        printf("Erreur lors de l'initialisation de la SDL : %s\n", SDL_GetError());
+        return 1;
+    }
+
+    // Création de la fenêtre et du renderer
     *fenetre = SDL_CreateWindow("test", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WINDOWS_WIDTH, WINDOWS_HEIGHT, SDL_WINDOW_OPENGL);
+
+    // Initialisation de SDL_ttf
+    if (TTF_Init() != 0) {
+        printf("Erreur lors de l'initialisation de SDL_ttf : %s\n", TTF_GetError());
+        return 1;
+    }
+
+    // Création de la fenêtre et du rendu
     *rendu = SDL_CreateRenderer(*fenetre, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawColor(*rendu, 255, 255, 255, 255);
 
@@ -76,6 +94,15 @@ void chargerTextures(SDL_Renderer *rendu) {
         printf("Erreur de chargement du fond: %s\n", SDL_GetError());
     }
     else printf("Chargement du fond réussi\n");
+
+    temp_surface = SDL_LoadBMP("images/background2.bmp");
+    menu_tex = SDL_CreateTextureFromSurface(rendu, temp_surface);
+    if( menu_tex == NULL){
+        printf("Erreur de chargement de l'image du menu: %s\n", SDL_GetError());
+    }
+    else printf("Chargement du fond du menu réussi\n");
+    SDL_FreeSurface(temp_surface);
+
 }
 
 int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
@@ -83,6 +110,46 @@ int fin(SDL_Window *fenetre, SDL_Renderer *rendu) {
     SDL_DestroyWindow(fenetre);
     SDL_Quit();
     return 0;
+}
+
+void affichageMenuImage(SDL_Renderer *rendu){
+    SDL_RenderCopy(rendu, menu_tex, 0, 0);
+}
+
+int getMousePositionDirection(SDL_Rect *pers_destination){
+    int direction = BAS;
+    int x_joueur = pers_destination->x;
+    int y_joueur = pers_destination->y;
+    int x, y;
+    SDL_GetMouseState(&x, &y);
+    int x_relatif, y_relatif;
+    x_relatif = x - x_joueur;
+    y_relatif = -(y - y_joueur);
+
+
+    int diag1_x, diag1_y, diag2_x, diag2_y;
+
+    diag1_x = (x_joueur + x_relatif);
+    diag1_y = (y_joueur - y_relatif);
+
+    diag2_x = (x_joueur - x_relatif);
+    diag2_y = (y_joueur + y_relatif);
+
+    bool is_above_diag1 = y < diag1_y;
+    bool is_above_diag2 = y < diag2_y;
+
+    printf("x = %d, y = %d\n", x_relatif, y_relatif);
+
+    if (!is_above_diag1 && !is_above_diag2) {
+        direction = HAUT;
+    } else if (is_above_diag1 && !is_above_diag2) {
+        direction = DROITE;
+    } else if (!is_above_diag1 && is_above_diag2) {
+        direction = GAUCHE;
+    } else {
+        direction = BAS;
+    }
+    return direction;
 }
 
 void actualisationSprite(int nb_sprite, int frame, int largeur, int hauteur, int direction, SDL_Rect *src, SDL_Rect *dst, SDL_Renderer *rendu){
@@ -113,20 +180,18 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
 
     if (clavier[SDL_SCANCODE_W] && pers_destination->y > 0) {
         pers_destination->y -= VITESSE_JOUEUR;
-        direction = 1;
     }
     if (clavier[SDL_SCANCODE_S] && pers_destination->y < WINDOWS_HEIGHT - DIM_SPRITE) {
         pers_destination->y += VITESSE_JOUEUR;
-        direction = 0;
     }
     if (clavier[SDL_SCANCODE_A] && pers_destination->x > 0) {
         pers_destination->x -= VITESSE_JOUEUR;
-        direction = 3;
     }
     if (clavier[SDL_SCANCODE_D] && pers_destination->x < WINDOWS_WIDTH - DIM_SPRITE) {
         pers_destination->x += VITESSE_JOUEUR;
-        direction = 2;
     }
+
+    direction = getMousePositionDirection(pers_destination);
 
     actualisationSprite(6, frame, DIM_SPRITE, DIM_SPRITE, direction, pers_source, pers_destination, rendu);
     
