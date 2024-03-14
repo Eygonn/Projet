@@ -7,7 +7,7 @@
 SDL_Renderer *rendu;
 SDL_Window *fenetre;
 
-SDL_Rect pers_source, pers_destination, cameraRect;
+SDL_Rect pers_source, pers_destination, ennemi_destination, ennemi_source ,cameraRect;
 
 // Alors j'ai crée un structure couleur vu qu'en C y a pas de tuple pour gérer les couleurs donc si tu dois mapper des couleurs n'hesite pas à utiliser ces constantes au lieu d'écrire (255,0,255)
 const Couleur_t JAUNE = {255,255,0};
@@ -22,6 +22,9 @@ int main() {
 
     pers_destination.y = WINDOWS_HEIGHT/ 2 - TAILLE_SPRITE_PLAYER / 2;
     pers_destination.x = WINDOWS_WIDTH / 2 - TAILLE_SPRITE_PLAYER / 2;
+
+    ennemi_destination.y = WINDOWS_HEIGHT - TAILLE_SPRITE_PLAYER ;
+    ennemi_destination.x = WINDOWS_WIDTH - TAILLE_SPRITE_PLAYER ;
 
     // Gestion des événements SDL
     SDL_Event event;
@@ -79,6 +82,9 @@ int main() {
         updateCamera(&pers_destination,rendu, &cameraRect);
 
         action(clavier, &pers_destination, &pers_source, frame, DIM_SPRITE_PLAYER, rendu);
+
+
+        action_ennemi(&ennemi_destination, &pers_destination, &ennemi_source, frame, DIM_SPRITE_PLAYER, rendu); /* envoi l'ennemi */
 
         // Rendu de la barre de vie
         SDL_RenderCopy(rendu, barTextureVie, NULL, &healthBarRect);
