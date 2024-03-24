@@ -3,6 +3,12 @@
 
 #include "carte.h"
 
+#include <stdio.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
+#include <stdbool.h>
+
 #define WINDOWS_WIDTH 1080
 #define WINDOWS_HEIGHT 720
 
@@ -58,4 +64,8 @@ void action(const Uint8 *clavier, SDL_Rect *pers_destination, SDL_Rect *pers_sou
 void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
 void updateCamera(SDL_Rect *pers_destination, SDL_Renderer *rendu, SDL_Rect *cameraRect, int tab[NB_TILE_HEIGHT][NB_TILE_WIDTH], SDL_Texture *tabTile[5]);
 int tabInit(SDL_Texture *tab[5], SDL_Renderer* rendu);
+void affichageMenuImage(SDL_Renderer *rendu);
+void renduFond(SDL_Renderer *rendu, SDL_Rect *cameraRect);
+int getMousePositionDirection(SDL_Rect *pers_destination);
+
 #endif
