@@ -98,11 +98,11 @@ Fonctions</h2></td></tr>
 <tr class="memitem:a8cdd3312e64d001bb2268e2a62283915"><td class="memItemLeft" align="right" valign="top"><a id="a8cdd3312e64d001bb2268e2a62283915" name="a8cdd3312e64d001bb2268e2a62283915"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>chargerCarte</b> (char *fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb)</td></tr>
 <tr class="separator:a8cdd3312e64d001bb2268e2a62283915"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4902dffa6674f800e6191832cf4eeac"><td class="memItemLeft" align="right" valign="top"><a id="ad4902dffa6674f800e6191832cf4eeac" name="ad4902dffa6674f800e6191832cf4eeac"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>chargerColisions</b> (int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb)</td></tr>
+<tr class="memitem:ad4902dffa6674f800e6191832cf4eeac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carte_8c.html#ad4902dffa6674f800e6191832cf4eeac">chargerColisions</a> (int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb)</td></tr>
+<tr class="memdesc:ad4902dffa6674f800e6191832cf4eeac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Charge les collisions à partir d'un tableau de tuiles.  <br /></td></tr>
 <tr class="separator:ad4902dffa6674f800e6191832cf4eeac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe8a09622c48a7da45c325bbb820350d"><td class="memItemLeft" align="right" valign="top"><a id="abe8a09622c48a7da45c325bbb820350d" name="abe8a09622c48a7da45c325bbb820350d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>afficherCarte</b> (int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], SDL_Renderer *rendu, SDL_Rect *camera, <a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> position, <a class="el" href="structcolision__t.html">colision_t</a> *colision, SDL_Texture *tilemap, int nb)</td></tr>
+<tr class="memitem:abe8a09622c48a7da45c325bbb820350d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="carte_8c.html#abe8a09622c48a7da45c325bbb820350d">afficherCarte</a> (int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], SDL_Renderer *rendu, SDL_Rect *camera, <a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> position, <a class="el" href="structcolision__t.html">colision_t</a> *colision, SDL_Texture *tilemap, int nb)</td></tr>
+<tr class="memdesc:abe8a09622c48a7da45c325bbb820350d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche la carte à l'écran.  <br /></td></tr>
 <tr class="separator:abe8a09622c48a7da45c325bbb820350d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d0dd6d96d2d945c4775c0ec7b43387e"><td class="memItemLeft" align="right" valign="top"><a id="a9d0dd6d96d2d945c4775c0ec7b43387e" name="a9d0dd6d96d2d945c4775c0ec7b43387e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>colisions</b> (<a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a> position, <a class="el" href="structcolision__t.html">colision_t</a> *colision, int tabTilesColision[NB_TILE_WIDTH][NB_TILE_HEIGHT])</td></tr>
@@ -111,7 +111,125 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>colisions</b> (<a cla
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Ce fichier contient les fonctions liées à la gestion des cartes et des collisions. </p>
 <p>Ce fichier contient les définitions des fonctions permettant de charger une carte à partir d'un fichier, de déterminer les collisions, et d'afficher la carte à l'écran. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a id="abe8a09622c48a7da45c325bbb820350d" name="abe8a09622c48a7da45c325bbb820350d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abe8a09622c48a7da45c325bbb820350d">&#9670;&#160;</a></span>afficherCarte()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int afficherCarte </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tab</em>[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Renderer *&#160;</td>
+          <td class="paramname"><em>rendu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Rect *&#160;</td>
+          <td class="paramname"><em>camera</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpositionJoueur__t.html">positionJoueur_t</a>&#160;</td>
+          <td class="paramname"><em>position</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcolision__t.html">colision_t</a> *&#160;</td>
+          <td class="paramname"><em>colision</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Texture *&#160;</td>
+          <td class="paramname"><em>tilemap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche la carte à l'écran. </p>
+<p>Cette fonction affiche la carte à l'écran en se basant sur les données du tableau donné.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab</td><td>Le tableau contenant les données de la carte. </td></tr>
+    <tr><td class="paramname">rendu</td><td>Le renderer SDL pour l'affichage. </td></tr>
+    <tr><td class="paramname">camera</td><td>La position de la caméra. </td></tr>
+    <tr><td class="paramname">position</td><td>La position du joueur. </td></tr>
+    <tr><td class="paramname">colision</td><td>Les données des collisions. </td></tr>
+    <tr><td class="paramname">tilemap</td><td>La texture contenant les tuiles. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>0 en cas de succès, -1 en cas d'erreur. </dd></dl>
+
+</div>
+</div>
+<a id="ad4902dffa6674f800e6191832cf4eeac" name="ad4902dffa6674f800e6191832cf4eeac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4902dffa6674f800e6191832cf4eeac">&#9670;&#160;</a></span>chargerColisions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void chargerColisions </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tab</em>[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabColision</em>[NB_TILE_WIDTH][NB_TILE_HEIGHT], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Charge les collisions à partir d'un tableau de tuiles. </p>
+<p>Cette fonction détermine les collisions en se basant sur les tuiles du tableau donné.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tab</td><td>Le tableau contenant les données de la carte. </td></tr>
+    <tr><td class="paramname">tabColision</td><td>Le tableau dans lequel stocker les données des collisions. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Généré par&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8

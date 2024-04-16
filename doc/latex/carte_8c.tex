@@ -22,12 +22,10 @@ Ce fichier contient les fonctions liées à la gestion des cartes et des collisi
 \Hypertarget{carte_8c_a8cdd3312e64d001bb2268e2a62283915}\label{carte_8c_a8cdd3312e64d001bb2268e2a62283915} 
 void {\bfseries charger\+Carte} (char \texorpdfstring{$\ast$}{*}fichier, int tab\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, int nb)
 \item 
-\Hypertarget{carte_8c_ad4902dffa6674f800e6191832cf4eeac}\label{carte_8c_ad4902dffa6674f800e6191832cf4eeac} 
-void {\bfseries charger\+Colisions} (int tab\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, int tab\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, int nb)
-\item 
-\Hypertarget{carte_8c_abe8a09622c48a7da45c325bbb820350d}\label{carte_8c_abe8a09622c48a7da45c325bbb820350d} 
-int {\bfseries afficher\+Carte} (int tab\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}camera, \mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} position, \mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}colision, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}tilemap, int nb)
-\item 
+void \mbox{\hyperlink{carte_8c_ad4902dffa6674f800e6191832cf4eeac}{charger\+Colisions}} (int tab\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, int tab\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, int nb)
+\begin{DoxyCompactList}\small\item\em Charge les collisions à partir d\textquotesingle{}un tableau de tuiles. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{carte_8c_abe8a09622c48a7da45c325bbb820350d}{afficher\+Carte}} (int tab\mbox{[}2\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]}, SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}rendu, SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}camera, \mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} position, \mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}colision, SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}tilemap, int nb)
+\begin{DoxyCompactList}\small\item\em Affiche la carte à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
 \Hypertarget{carte_8c_a9d0dd6d96d2d945c4775c0ec7b43387e}\label{carte_8c_a9d0dd6d96d2d945c4775c0ec7b43387e} 
 void {\bfseries colisions} (\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}} position, \mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}colision, int tab\+Tiles\+Colision\mbox{[}NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]})
 \end{DoxyCompactItemize}
@@ -37,3 +35,54 @@ void {\bfseries colisions} (\mbox{\hyperlink{structpositionJoueur__t}{position\+
 Ce fichier contient les fonctions liées à la gestion des cartes et des collisions. 
 
 Ce fichier contient les définitions des fonctions permettant de charger une carte à partir d\textquotesingle{}un fichier, de déterminer les collisions, et d\textquotesingle{}afficher la carte à l\textquotesingle{}écran. 
+
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{carte_8c_abe8a09622c48a7da45c325bbb820350d}\label{carte_8c_abe8a09622c48a7da45c325bbb820350d} 
+\index{carte.c@{carte.c}!afficherCarte@{afficherCarte}}
+\index{afficherCarte@{afficherCarte}!carte.c@{carte.c}}
+\doxysubsubsection{\texorpdfstring{afficherCarte()}{afficherCarte()}}
+{\footnotesize\ttfamily int afficher\+Carte (\begin{DoxyParamCaption}\item[{int}]{tab\mbox{[}2\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]},  }\item[{SDL\+\_\+\+Renderer \texorpdfstring{$\ast$}{*}}]{rendu,  }\item[{SDL\+\_\+\+Rect \texorpdfstring{$\ast$}{*}}]{camera,  }\item[{\mbox{\hyperlink{structpositionJoueur__t}{position\+Joueur\+\_\+t}}}]{position,  }\item[{\mbox{\hyperlink{structcolision__t}{colision\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{colision,  }\item[{SDL\+\_\+\+Texture \texorpdfstring{$\ast$}{*}}]{tilemap,  }\item[{int}]{nb }\end{DoxyParamCaption})}
+
+
+
+Affiche la carte à l\textquotesingle{}écran. 
+
+Cette fonction affiche la carte à l\textquotesingle{}écran en se basant sur les données du tableau donné.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab} & Le tableau contenant les données de la carte. \\
+\hline
+{\em rendu} & Le renderer SDL pour l\textquotesingle{}affichage. \\
+\hline
+{\em camera} & La position de la caméra. \\
+\hline
+{\em position} & La position du joueur. \\
+\hline
+{\em colision} & Les données des collisions. \\
+\hline
+{\em tilemap} & La texture contenant les tuiles. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+0 en cas de succès, -\/1 en cas d\textquotesingle{}erreur. 
+\end{DoxyReturn}
+\Hypertarget{carte_8c_ad4902dffa6674f800e6191832cf4eeac}\label{carte_8c_ad4902dffa6674f800e6191832cf4eeac} 
+\index{carte.c@{carte.c}!chargerColisions@{chargerColisions}}
+\index{chargerColisions@{chargerColisions}!carte.c@{carte.c}}
+\doxysubsubsection{\texorpdfstring{chargerColisions()}{chargerColisions()}}
+{\footnotesize\ttfamily void charger\+Colisions (\begin{DoxyParamCaption}\item[{int}]{tab\mbox{[}2\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]},  }\item[{int}]{tab\+Colision\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+WIDTH\mbox{]}\mbox{[}\+NB\+\_\+\+TILE\+\_\+\+HEIGHT\mbox{]},  }\item[{int}]{nb }\end{DoxyParamCaption})}
+
+
+
+Charge les collisions à partir d\textquotesingle{}un tableau de tuiles. 
+
+Cette fonction détermine les collisions en se basant sur les tuiles du tableau donné.
+
+
+\begin{DoxyParams}{Paramètres}
+{\em tab} & Le tableau contenant les données de la carte. \\
+\hline
+{\em tab\+Colision} & Le tableau dans lequel stocker les données des collisions. \\
+\hline
+\end{DoxyParams}

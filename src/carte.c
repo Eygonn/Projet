@@ -1,3 +1,10 @@
+/**
+ * \file carte.c
+ * \brief Ce fichier contient les fonctions liées à la gestion des cartes et des collisions.
+ * 
+ * Ce fichier contient les définitions des fonctions permettant de charger une carte à partir d'un fichier,
+ * de déterminer les collisions, et d'afficher la carte à l'écran.
+ */
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -48,6 +55,14 @@ void chargerCarte(char * fichier, int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int
     fclose(fp);
 }
 
+/**
+ * \brief Charge les collisions à partir d'un tableau de tuiles.
+ * 
+ * Cette fonction détermine les collisions en se basant sur les tuiles du tableau donné.
+ * 
+ * \param tab Le tableau contenant les données de la carte.
+ * \param tabColision Le tableau dans lequel stocker les données des collisions.
+ */
 void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision[NB_TILE_WIDTH][NB_TILE_HEIGHT], int nb){
     for(int y = 0; y < NB_TILE_WIDTH; y++){
         for(int x = 0; x < NB_TILE_HEIGHT; x++){
@@ -62,7 +77,19 @@ void chargerColisions(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], int tabColision
     }
 }
 
-
+/**
+ * \brief Affiche la carte à l'écran.
+ * 
+ * Cette fonction affiche la carte à l'écran en se basant sur les données du tableau donné.
+ * 
+ * \param tab Le tableau contenant les données de la carte.
+ * \param rendu Le renderer SDL pour l'affichage.
+ * \param camera La position de la caméra.
+ * \param position La position du joueur.
+ * \param colision Les données des collisions.
+ * \param tilemap La texture contenant les tuiles.
+ * \return 0 en cas de succès, -1 en cas d'erreur.
+ */
 int afficherCarte(int tab[2][NB_TILE_WIDTH][NB_TILE_HEIGHT], 
     SDL_Renderer * rendu,
     SDL_Rect * camera,

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['joueur_5fs_0',['joueur_s',['../structjoueur__s.html',1,'']]]
+  ['ennemi_5fs_0',['ennemi_s',['../structennemi__s.html',1,'']]]
 ];
